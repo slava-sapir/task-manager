@@ -1,0 +1,41 @@
+<div class="ui container">
+
+    <div class="ui segment">
+      <i class="filter icon"></i>
+        <label>Filter your tasks:</label>
+        <select class="ui fluid dropdown menu"
+            (change)="optionFilter($event.target.value)" [(ngModel)]="option">
+            <option [value]="option" selected>{{ option }}</option>
+            <option class="item" *ngFor="let option of options" [value]="option">
+              {{option}}
+            </option>
+        </select>
+    </div> 
+
+     <div *ngIf="tasks; else comment" class="ui celled list">
+        <div class="item" *ngFor="let task of tasks">
+          <a [routerLink]="task._id" routerLinkActive="active">
+            <div class="content">
+                <div class="header">
+                    <div class="ui left pointing label">
+                    Task
+                    </div>
+                    {{ task.title }}  
+                </div>
+            </div>
+          </a>
+        </div>
+     </div>
+     <ng-template #comment>
+      <div class="ui icon message">
+        <i class="chart line icon"></i>
+        <div class="content">
+          <div class="header">
+            Have you heard about our task manager?
+          </div>
+          <p>You haven't created tasks yet!.</p>
+        </div>
+      </div>
+    </ng-template>
+
+</div>

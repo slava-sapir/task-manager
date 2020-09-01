@@ -1,0 +1,24 @@
+<div class="ui container">
+    <div class="ui segment">
+        
+<h3>Sign in</h3>
+<form (ngSubmit)="onSubmit()" class="ui form" [formGroup]="authForm">
+    <app-input inputType="email" label="Email" [control]="authForm.get('email')">
+    </app-input>
+    <app-input inputType="password" label="Password" [control]="authForm.get('password')">
+    </app-input>
+
+    <div *ngIf="authForm.errors" class="ui red basic label">
+        <p *ngIf="authForm.errors.credentials">
+            Invalid email or password
+        </p>
+    </div>
+    <div>
+    <button class="ui submit button primary">
+        Submit
+    </button>
+   </div>
+</form>
+
+</div>
+</div>

@@ -1,0 +1,20 @@
+.actions:empty {
+    display: none;
+}
+
+.actions-default {
+    display: none;
+}
+
+.actions:empty + .actions-default {
+    display: block !important;
+}
+
+.modal {
+    position: absolute;
+    left: 30%;
+    right: 10%;
+    top: 10%;
+    bottom: 20%;
+    max-width: 600px;
+  }

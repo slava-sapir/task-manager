@@ -1,0 +1,53 @@
+<form class="ui form" [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+ <app-input [control]="taskForm.get('title')" inputType="text" label="Title"></app-input>
+ <!-- <div class="field">
+    <div>
+      <i class="sticky note outline icon"></i>
+      <label>Description</label>
+    </div> 
+     <textarea rows="5" cols="30" formControlName="description">
+         {{ taskForm.get('description').value }}
+     </textarea>
+ </div> -->
+
+ <div class="field" *ngIf="taskForm.get('_id')">
+      <i class="calendar alternate outline icon"></i>
+      <div class="ui left pointing label">
+       Task created at: {{ taskForm.get('createdAt').value }}
+      </div>   
+ </div>
+
+ <div class="field" *ngIf="taskForm.get('_id')">
+      <i class="calendar alternate outline icon"></i>
+      <div class="ui left pointing label">
+        Last time updated at: {{ taskForm.get('updatedAt').value }}
+    </div>   
+ </div>
+
+ <div class="field" *ngIf="taskForm.get('_id')">
+    <div class="ui checkbox" *ngIf="taskForm.get('completed').value === true; else next">
+      <input type="checkbox" name="completeness" (change)="onChange()" checked>
+        <label>This task was completed, uncheck if you are still in progress</label>
+    </div>  
+  </div>
+  
+  <ng-template #next>
+    <div class="ui checkbox">
+      <input type="checkbox" name="completeness" (click)="onChange()">
+      <label>This task is incompleted, check if you are have finished</label>
+    </div>  
+  </ng-template>
+
+  <app-input controlType="textarea" [control]="taskForm.get('description')" label="Description"></app-input>
+ 
+  <div class="field">
+    <div class="ui buttons">
+        <button class="ui primary button" [disabled]="taskForm.invalid">
+          Send</button>
+        <div class="or"></div>
+        <button class="ui positive button" (click)="reset()">
+        Reset</button>
+    </div>
+  </div>
+
+</form>

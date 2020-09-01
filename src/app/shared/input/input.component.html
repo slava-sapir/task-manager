@@ -1,0 +1,83 @@
+<div class="field">
+
+    <div *ngIf="controlType === 'textarea';else next">
+       <i class="sticky note outline icon"></i>
+       <label id="lbl">{{ label }}</label>
+       <textarea *ngIf="controlType === 'textarea'" [formControl]="control"  rows="5" cols="30"></textarea>  
+    </div>
+
+ <ng-template #next>
+    <!-- <label id="lbl">{{ label }}</label> -->
+    <div class="ui pointing below label">{{ label }}</div>
+    <div class="ui left icon input">
+      <input *ngIf="controlType === 'input'" [type]="inputType" [formControl]="control"/>
+     
+        <ng-container [ngSwitch] = "getLabelName()">
+            <ng-template [ngSwitchCase]="'Email'">
+                <i class="envelope icon"></i>
+            </ng-template>
+        
+            <ng-template [ngSwitchCase]="'Password'">
+                <i class="lock icon"></i>
+            </ng-template>
+
+            <ng-template [ngSwitchCase]="'Created At'">
+                <i class="calendar alternate outline icon"></i>
+            </ng-template>
+
+            <ng-template [ngSwitchCase]="'Updated At'">
+                <i class="calendar alternate outline icon"></i>
+            </ng-template>
+
+            <ng-template [ngSwitchCase]="'Description'">
+                <i class="sticky note outline icon"></i>
+            </ng-template>
+
+            <ng-template [ngSwitchCase]="'Title'">
+                <i class="edit outline icon"></i>
+            </ng-template>
+
+            <ng-template [ngSwitchCase]="'Age'">
+                <i class="id badge icon"></i>
+            </ng-template>
+
+            <ng-template ngSwitchDefault>
+                <i class="user icon"></i>
+            </ng-template>
+        </ng-container>
+    </div>
+</ng-template>
+
+    <div *ngIf="showErrors()" class="ui pointing red basic label">
+        <p *ngIf="control.errors.required">
+           Value is required
+        </p>
+        <p *ngIf="control.errors.minlength">
+            Value entered is 
+            {{ control.errors.minlength.actualLength }}
+            charcters long but it must be at least
+            {{ control.errors.minlength.requiredLength }}
+            characters
+        </p>
+        <p *ngIf="control.errors.maxlength">
+            Value entered is 
+            {{ control.errors.maxlength.actualLength }}
+            charcters long but it can not be longerthan
+            {{ control.errors.maxlength.requiredLength }}
+            characters
+        </p>
+        <p *ngIf="control.errors.pattern">
+           Invalid format
+        </p>
+        <p *ngIf="control.errors.nonUniqueUsername">
+            This username is already in use
+        </p>
+        <p *ngIf="control.errors.noConnection">
+           No Internet connection
+        </p>
+        <p *ngIf="control.errors.unknownError">
+            Failed to signup
+       </p>
+    </div>
+
+</div>

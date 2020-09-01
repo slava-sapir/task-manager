@@ -1,0 +1,9 @@
+.accordion {
+    margin-top: 5%;
+    margin-left: 22%;
+    flex: auto;
+}
+
+.basic.label {
+    margin-bottom: 1em;
+}

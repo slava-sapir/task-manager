@@ -1,0 +1,10 @@
+<div>
+    <button (click)="showModal = true" class="ui button inverted primary fluid">
+       Create task
+    </button>
+</div>
+
+<app-modal (dismiss)="showModal = false" *ngIf="showModal">
+    <div modalTitle>Create Task</div>
+    <app-task-form [task]="task" (taskSubmit)="onSubmit($event)"></app-task-form>
+</app-modal>

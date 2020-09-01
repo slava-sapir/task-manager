@@ -1,0 +1,11 @@
+<div>
+    <button (click)="showModal = true" class="ui inverted red button">
+        Delete task
+    </button>
+</div>
+
+<app-modal (dismiss)="showModal = false" *ngIf="showModal">
+    <div modalTitle>Delete Task</div>
+    <app-task-form [task]="task" (taskSubmit)="onSubmit($event)"></app-task-form>
+</app-modal>
+

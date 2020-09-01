@@ -1,0 +1,65 @@
+<div class="container">
+<div class="ui celled list">
+
+    <h2 class="ui header">
+      <i class="settings icon"></i>
+      <div class="content">
+        Task title: {{ task.title }}
+      </div>
+    </h2>  
+
+        <div class="sub header">
+          <h4> Task created at:<i> {{task.createdAt}}</i></h4>
+         </div>
+        
+         <div class="sub header">
+            <h4>Last time updated at:<i> {{task.updatedAt}}</i></h4>
+        </div>
+           
+        <div class="ui hidden divider"></div>
+
+        <div class="content">
+          
+            <div class="sub header">
+                <h4>Description:</h4>
+            </div>
+            <i>{{task.description }}</i>
+      
+            <div class="ui hidden divider"></div>
+
+            <div class="sub header">  
+              <h4>If Completed:
+              <i *ngIf="task.completed === true; else next">Task is completed</i>
+              <ng-template #next>
+                <i>Task is not completed</i>
+              </ng-template>
+             </h4>
+            </div>
+
+        </div>
+
+      <table class="appTable">
+        <tr>
+          <td>
+            <div>
+                <app-task-update [task]="task"></app-task-update>
+            </div>
+          </td>
+          <td>
+            <div>
+                <app-task-delete [task]="task"></app-task-delete>
+            </div>
+          </td>
+          <td>
+            <div>
+              <button class="ui inverted grey secondary button" (click)="onClick()">
+                Cancel
+              </button>
+            </div>
+          </td>
+        </tr>
+      </table>
+
+ </div>
+</div>
+<div class="ui divider" style="margin-left: 2em;"></div>

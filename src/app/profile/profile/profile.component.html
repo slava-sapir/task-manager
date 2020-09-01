@@ -1,0 +1,157 @@
+<div class="ui container">
+    <div class="ui segment">
+
+        <div *ngIf="showSuccess" class="ui success message">
+            <i class="close icon" (click)="closeShowSuccess()"></i>
+            <div class="header">
+              Your info update was successful.
+            </div>
+            <p>You may now log-in with the username you have chosen</p>
+        </div>
+
+        <div class="ui accordion styled">
+
+        <!-- <ng-container> -->
+          <form class="ui form attached fluid segment"  [formGroup]="userForm">
+            <div [ngClass]="{ active: openItemIndex1 }" class="ui title" (click)="openForm()">
+                <div class="ui attached message">
+                  <div class="header">
+                    <i class="dropdown icon"></i>
+                        {{ EditPersonalInfo }}
+                   </div>
+                </div>
+
+                 <div class="ui hidden divider"></div>
+                      
+                <div class="two fields">
+                   <div class="field">    
+                        <div class="ui horizontal label">
+                           <i class="mail icon"></i>
+                            Your email:
+                        </div>     
+                        {{ userProfile.email }}
+                    </div>
+        
+                    <div class="field">
+                        <div class="ui horizontal label">
+                            <i class="info icon"></i>
+                             Last update:
+                        </div>     
+                        {{ userProfile.updatedAt.slice(0,10) }}
+                    </div>
+                </div>
+
+                <div class="two fields">
+                    <div class="field">    
+                        <div class="ui horizontal label">
+                           <i class="user icon"></i>
+                            Your username: 
+                        </div>     
+                        {{ userProfile.name }}
+                    </div>
+     
+                    <div class="field">
+                        <div class="ui horizontal label">
+                           <i class="id badge icon"></i>
+                            Your age: 
+                       </div>     
+                        {{ userProfile.age }}
+                    </div>
+                </div>
+              </div>
+        
+                <div [ngClass]="{ active: openItemIndex1 }" class="content">
+                    <div class="two fields">
+                      <div class="field">
+                      <app-input inputType="email" label="Email" [control]="userForm.get('email')">
+                        </app-input>
+                      </div>
+                        <div class="field">
+                        <app-input inputType="name" label="Name" [control]="userForm.get('name')">
+                        </app-input>
+                      </div>
+                    </div>
+
+                    <div class="two fields">
+                        <div class="field">
+                        <app-input inputType="number" label="Age" [control]="userForm.get('age')">
+                        </app-input>
+                        </div>
+                    </div>
+
+                    <div class="two fields">
+                        <div class="field">
+                        <button class="ui primary fluid button" 
+                          (click)="update(userForm.value)">Save</button>
+                        </div>
+                        <div class="field">   
+                        <button class="ui positive fluid button" (click)="cancel()">Reset</button>
+                        </div>
+                    </div>
+                
+            </div>
+           </form>
+        <!-- </ng-container> -->
+        </div>
+
+    
+
+        
+    <div class="ui accordion styled">
+        <ng-container>
+            <form class="ui form attached fluid segment"  [formGroup]="userForm">
+            <div [ngClass]="{ active: openItemIndex2 }" class="ui title" (click)="openPassForm()">
+                <div class="ui attached message">
+                <div class="header">
+                    <i class="dropdown icon"></i>
+                        {{ EditPassword }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="ui hidden divider"></div>
+
+            <div [ngClass]="{ active: openItemIndex2 }" class="content">
+                <div class="two fields">
+                <div class="field">
+                <app-input inputType="password" label="Password"
+                [control]="userForm.get('password')">
+                </app-input>
+                </div>
+                <div class="field">
+                <app-input inputType="password" label="Password Confirmation" 
+                [control]="userForm.get('passwordConfirmation')">
+                </app-input>
+                </div>
+                </div>
+
+                <div class="two fields">
+                <div class="field">
+                <button class="ui primary fluid button" 
+                [disabled]="userForm.get('password').errors || userForm.get('passwordConfirmation').errors"
+                (click)="updatePassword(userForm.get('password').value)">Save</button>
+                </div>
+                <div class="field">   
+                <button class="ui positive fluid button" (click)="cancel()">Reset</button>
+                </div>
+                </div>
+
+                <div *ngIf="userForm.get('password').touched && 
+                userForm.get('passwordConfirmation').touched && userForm.errors" 
+                class="ui pointing basic red label">
+                <p *ngIf="userForm.errors.passwordDontMatch">
+                Password and Password Confirmation doesn't match
+                </p>
+                </div>
+
+            </div>
+        </form>
+      </ng-container>
+    </div>
+        
+    <div class="ui hidden divider"></div>
+
+    </div>
+</div>
+
+      

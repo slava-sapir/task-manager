@@ -1,0 +1,32 @@
+
+<div class="dropdown" (clickOutside)="onClickedOutside($event)" (click)="$event.stopPropagation()">
+
+      <div class="text">
+        <a class="dropbtn"  (click)="classChange()">
+          <img *ngIf="userAvatar; else image" class="ui avatar image" [src]="getSrc()">
+          <ng-template #image>
+            <img class="ui avatar image" [src]="defaultImageUrl">
+          </ng-template>
+      </a>
+        Hello {{ userName }}
+      </div>      
+
+      <div [className]="changeClass ? 'dropdown-content show' : 'dropdown-content hidden'" id="myDropdown">
+
+        <input type="file" style="display:none" name="avatar" id="avatar" accept="image/*" 
+        (change)="selectFile($event.target.files)" #file/>
+
+        <a *ngIf="currentFile; else next" style="cursor: pointer;">
+          <i class="check icon"></i>{{currentFileName}}</a>
+          <ng-template #next>
+        <a style="cursor: pointer;" (click)="file.click()">
+          <i class="id badge icon"></i>Choose avatar</a>
+          </ng-template>
+        <a style="cursor: pointer;" (click)="uploadFile()">
+          <i class="upload icon"></i>Upload avatar</a> 
+        <a style="cursor: pointer;" (click)="delete()">
+          <i class="trash icon"></i>Delete avatar</a>
+      
+      </div>
+</div>
+
