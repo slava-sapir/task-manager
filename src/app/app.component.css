@@ -1,0 +1,17 @@
+.footer {
+    color: hsl(0, 6%, 85%);
+    clear: both;
+    position: relative;
+    margin-top: 25px;
+    padding: 25px 0;
+    left: 1em;
+    bottom: 0;
+    width: 100%;
+    text-align: center;   
+    color: rgba(0, 153, 255, 0.993);
+ }
+
+ .container {
+    min-height: 87%;
+    position: relative;
+ }

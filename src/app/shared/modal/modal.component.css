@@ -12,9 +12,9 @@
 
 .modal {
     position: absolute;
-    left: 30%;
-    right: 10%;
+    left: 35%;
+    right: 20%;
     top: 10%;
     bottom: 20%;
-    max-width: 600px;
+    max-width: 500px;
   }

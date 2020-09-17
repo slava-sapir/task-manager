@@ -9,11 +9,11 @@
     </h2>  
 
         <div class="sub header">
-          <h4> Task created at:<i> {{task.createdAt}}</i></h4>
+          <h4> Task created at:<i> {{task.createdAt.slice(0,10)}}</i></h4>
          </div>
         
          <div class="sub header">
-            <h4>Last time updated at:<i> {{task.updatedAt}}</i></h4>
+            <h4>Last time updated at:<i> {{task.updatedAt.slice(0,10)}}</i></h4>
         </div>
            
         <div class="ui hidden divider"></div>

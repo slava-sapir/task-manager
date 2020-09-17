@@ -1,5 +1,5 @@
 import { TaskService } from './../task.service';
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Task } from '../task';
 import { Router } from '@angular/router';
 
@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class TaskCreateComponent implements OnInit {
   showModal = false;
-  task: Task;
+  @Input() task: Task;
 
   constructor(private taskService: TaskService,
               private router: Router ) {}

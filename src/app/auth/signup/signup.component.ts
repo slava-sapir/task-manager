@@ -28,6 +28,10 @@ export class SignupComponent implements OnInit {
       Validators.required,
       Validators.pattern(/^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/)
     ]),
+    age: new FormControl('', [
+      Validators.required,
+      Validators.pattern(/^(1[89]|[2-9]\d)$/)
+    ]),
     password: new FormControl('', [
       Validators.required,
       Validators.minLength(8),

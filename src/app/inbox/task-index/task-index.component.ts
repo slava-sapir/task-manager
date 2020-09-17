@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./task-index.component.css']
 })
 export class TaskIndexComponent implements OnInit {
+  emptyLabel: boolean;
   openItemIndex = false;
   tasks: Task[];
   option = '---Choose filter---';
@@ -17,8 +18,7 @@ export class TaskIndexComponent implements OnInit {
                      'Descending order', 'Ascending order'];
 
 
-  constructor(private taskService: TaskService,
-              private router: Router) {
+  constructor(private taskService: TaskService) {
                 this.taskService.refreshPage.subscribe( () => {
                   this.getTasks();
                   this.option = this.options[0];
@@ -33,7 +33,10 @@ export class TaskIndexComponent implements OnInit {
     this.taskService.getAllTasks()
       .subscribe( (tasks) => {
       this.tasks = tasks;
-       });
+      if(this.tasks.length > 0) {
+        this.emptyLabel = true;
+      } else {this.emptyLabel = false;}
+    });
   }
 
   optionFilter(filterVal: any) {

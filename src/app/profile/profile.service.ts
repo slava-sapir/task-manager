@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from './user';
+import { pipe, BehaviorSubject } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 
 @Injectable({
@@ -8,7 +10,8 @@ import { User } from './user';
 })
 
 export class ProfileService {
-
+  
+  signedin$ = new BehaviorSubject(null);
   rootUrl = 'https://sapir-task-manager.herokuapp.com';
 
   constructor(private http: HttpClient) { }
@@ -25,5 +28,9 @@ export class ProfileService {
   updatePassword(password: string) {
     const update = { password };
     return this.http.patch<User>(`${this.rootUrl}/users/me/password`, update);
+  }
+
+  deleteProfile() {
+    return this.http.delete(`${this.rootUrl}/users/me`);
   }
 }

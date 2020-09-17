@@ -1,0 +1,40 @@
+
+<div class="ui bottom attached button" (click)="showModal = true">Delete profile</div>
+
+
+<app-modal (dismiss)="showModal = false" *ngIf="showModal">
+    <div modalTitle>Delete Profile</div>
+   
+        <div class="image" style="text-align: center;">
+            <img [src]="imgSrc">
+        </div>
+        <div class="card">
+            <div class="content">
+                             
+              <div class="header">
+               Hi {{ username }}!
+              </div>
+
+              <div class="meta">
+              </div>
+
+              <div class="description">
+              <p>Your profile will be deleted permanentally with all your personal information
+                <b>forever!</b>
+              </p>
+              </div>
+
+            </div>
+       
+            <div class="ui hidden divider"></div>
+
+            <div modalFooter class="extra content">
+             <div class="ui two buttons">
+                
+                <div class="ui positive button" (click)="cancel()">Decline</div>
+                <div class="ui primary button" (click)="delete()">Approve</div>
+
+             </div>
+            </div>
+        </div>
+</app-modal>

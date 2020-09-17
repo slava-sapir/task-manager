@@ -13,14 +13,14 @@
  <div class="field" *ngIf="taskForm.get('_id')">
       <i class="calendar alternate outline icon"></i>
       <div class="ui left pointing label">
-       Task created at: {{ taskForm.get('createdAt').value }}
+       Task created at: {{ taskForm.get('createdAt').value.slice(0,10) }}
       </div>   
  </div>
 
  <div class="field" *ngIf="taskForm.get('_id')">
       <i class="calendar alternate outline icon"></i>
       <div class="ui left pointing label">
-        Last time updated at: {{ taskForm.get('updatedAt').value }}
+        Last time updated at: {{ taskForm.get('updatedAt').value.slice(0,10) }}
     </div>   
  </div>
 

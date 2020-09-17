@@ -9,6 +9,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class AppComponent implements OnInit {
  
+  myFooter = 'created by slava sapir | © 2020 Copyright: All right reserved | slavas21@gmail.com';
   signedin$: BehaviorSubject<boolean>;
 
   constructor(private authService: AuthService) {
