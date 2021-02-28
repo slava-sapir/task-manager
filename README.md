@@ -1,3 +1,5 @@
+https://angular-task-management.herokuapp.com - Final Task management app was deployed on Heroku. In this project, I developed REST API using Node.js, Express JS (https://github.com/slava-sapir/task-manager-api.git ) and MongoDB Atlas deployed in clouds and integrated that API with Angular-9 and Semantic UI on Front-End.
+
 # TaskManager
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.3.
